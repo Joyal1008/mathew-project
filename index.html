@@ -45,13 +45,20 @@
     background: rgba(10,14,26,0.92);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--dark-border);
-  }
-  .nav-logo {
+}
+
+.nav-logo {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-right: auto;
-  }
+    flex: 1;
+}
+
+.nav-logo h2{
+    margin:0;
+    white-space: nowrap;
+}
   .nav-logo-icon {
     width: 30px; height: 30px;
     background: linear-gradient(135deg, var(--ev-orange), #FF3D00);
