@@ -51,6 +51,20 @@
     backdrop-filter: blur(50px);
     border-bottom: 1px solid var(--dark-border);
 }
+  .navbar{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #111;
+    padding: 10px 20px;
+    color: white;
+}
+
+.logo{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
 
 .nav-logo{
     display: flex;
@@ -1143,7 +1157,7 @@ body {
     background-attachment: scroll;
   }
 }
-
+<link rel="icon" type="image/png" href="logo.png">
   
 </style>
 </head>
@@ -1160,6 +1174,11 @@ body {
 
         <h2>MATHEW <span>SOLUTIONS</span></h2>
     </div>
+  <div class="navbar">
+    <img src="logo.png" class="logo">
+
+    <h2>My Website</h2>
+</div>
 
 
   <ul class="nav-links" id="navLinks">
