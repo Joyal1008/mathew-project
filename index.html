@@ -1035,16 +1035,21 @@ body {
   border-radius: 8px;
   font-size: 16px;
   outline: none;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
+  .form-select textarea:focus{
   border-color: #00b140;
-  box-shadow: 0 0 8px rgba(0,177,64,0.2);
+  box-shadow: 0 0 15px rgba(0,177,64,0.35);
+  transform: translateY(-2px);
   
 }
-
-.submit-btn {
+ .submit-btn {
   background: #00b140;
   color: white;
   border: none;
