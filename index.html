@@ -1248,11 +1248,53 @@ body {
 }
 .back-to-top.show{opacity:1;transform:translateY(0);pointer-events:all;}
 .back-to-top:hover{box-shadow:0 12px 32px rgba(0,245,196,.5);transform:translateY(-3px);}
+  /* ===== CUSTOM ANIMATED CURSOR ===== */
+
+body,
+a,
+button,
+input,
+textarea,
+select{
+  cursor:none;
+}
+
+.cursor{
+  position:fixed;
+  width:12px;
+  height:12px;
+  background:#00FF87;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:9999;
+  transform:translate(-50%,-50%);
+  box-shadow:
+    0 0 10px #00FF87,
+    0 0 20px #00FF87,
+    0 0 30px #00FF87;
+}
+
+.cursor-ring{
+  position:fixed;
+  width:40px;
+  height:40px;
+  border:2px solid #FF6B00;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:9998;
+  transform:translate(-50%,-50%);
+  transition:
+    width .3s ease,
+    height .3s ease,
+    border-color .3s ease;
+}
 
   
 </style>
 </head>
 <body>
+  <div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
 
 <!-- NAVBAR -->
@@ -1944,8 +1986,77 @@ backToTop.addEventListener("click", () => {
     behavior: "smooth"
   });
 
-</script>
+
   
+</script>
+  <script>
+const cursor = document.getElementById("cursor");
+const cursorRing = document.getElementById("cursorRing");
+
+let mouseX = 0;
+let mouseY = 0;
+let ringX = 0;
+let ringY = 0;
+
+// Cursor follow
+document.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+
+  cursor.style.left = mouseX + "px";
+  cursor.style.top = mouseY + "px";
+});
+
+// Smooth ring animation
+function animateRing() {
+  ringX += (mouseX - ringX) * 0.12;
+  ringY += (mouseY - ringY) * 0.12;
+
+  cursorRing.style.left = ringX + "px";
+  cursorRing.style.top = ringY + "px";
+
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+
+// Hover effect
+document.querySelectorAll("a, button").forEach(el => {
+
+  el.addEventListener("mouseenter", () => {
+    cursor.style.transform =
+      "translate(-50%, -50%) scale(1.8)";
+
+    cursorRing.style.width = "70px";
+    cursorRing.style.height = "70px";
+    cursorRing.style.borderColor = "#00FF87";
+  });
+
+  el.addEventListener("mouseleave", () => {
+    cursor.style.transform =
+      "translate(-50%, -50%) scale(1)";
+
+    cursorRing.style.width = "40px";
+    cursorRing.style.height = "40px";
+    cursorRing.style.borderColor = "#FF6B00";
+  });
+
+});
+
+// Click pulse animation
+document.addEventListener("click", () => {
+
+  cursor.animate(
+    [
+      { transform: "translate(-50%, -50%) scale(1)" },
+      { transform: "translate(-50%, -50%) scale(3)" },
+      { transform: "translate(-50%, -50%) scale(1)" }
+    ],
+    {
+      duration: 300
+    }
+  );
+
+});
 </script>
 </body>
 </html>
