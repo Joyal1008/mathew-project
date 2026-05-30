@@ -2023,5 +2023,62 @@ document.addEventListener("click", () => {
 
 });
 </script>
+  <!-- BACK TO TOP BUTTON -->
+<button id="backToTop" class="back-to-top">↑</button>
+
+<style>
+.back-to-top{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  width:55px;
+  height:55px;
+  border:none;
+  border-radius:50%;
+  background:#FF6B00;
+  color:#fff;
+  font-size:24px;
+  font-weight:bold;
+  cursor:pointer;
+  z-index:9999;
+
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(20px);
+
+  transition:all .3s ease;
+  box-shadow:0 5px 20px rgba(255,107,0,0.4);
+}
+
+.back-to-top.show{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+.back-to-top:hover{
+  transform:translateY(-5px);
+  box-shadow:0 8px 30px rgba(255,107,0,0.6);
+}
+</style>
+
+<script>
+const backToTop = document.getElementById("backToTop");
+
+window.addEventListener("scroll", function() {
+  if (window.pageYOffset > 300) {
+    backToTop.classList.add("show");
+  } else {
+    backToTop.classList.remove("show");
+  }
+});
+
+backToTop.addEventListener("click", function() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+</script>
 </body>
 </html>
