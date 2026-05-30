@@ -1232,22 +1232,7 @@ body {
     background-attachment: scroll;
   }
 }
- /* ═══════════════════════════════════════
-   BACK TO TOP
-═══════════════════════════════════════ */
-.back-to-top{
-  position:fixed;bottom:2rem;right:2rem;z-index:500;
-  width:46px;height:46px;border-radius:50%;
-  background:var(--accent);color:#000;border:none;
-  cursor:none;font-size:1.1rem;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 8px 24px rgba(0,245,196,.3);
-  opacity:0;transform:translateY(20px);
-  transition:opacity .4s,transform .4s,box-shadow .3s;
-  pointer-events:none;
-}
-.back-to-top.show{opacity:1;transform:translateY(0);pointer-events:all;}
-.back-to-top:hover{box-shadow:0 12px 32px rgba(0,245,196,.5);transform:translateY(-3px);}
+
   /* ===== CUSTOM ANIMATED CURSOR ===== */
 
 body,
@@ -1969,26 +1954,7 @@ window.addEventListener('scroll', () => {
     nav.style.background = 'rgba(10,14,26,0.65)';
   }
 });
-<script>
-const backToTop = document.getElementById("backToTop");
-
-window.addEventListener("scroll", () => {
-  if (window.pageYOffset > 300) {
-    backToTop.classList.add("show");
-  } else {
-    backToTop.classList.remove("show");
-  }
-});
-
-backToTop.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-
-
-  
-</script>
+  </script>
   <script>
 const cursor = document.getElementById("cursor");
 const cursorRing = document.getElementById("cursorRing");
