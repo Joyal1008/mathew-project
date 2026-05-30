@@ -2080,5 +2080,72 @@ backToTop.addEventListener("click", function() {
   });
 });
 </script>
+  <style>
+/* MOBILE TOUCH EFFECT */
+
+button,
+a,
+.product-card,
+.why-card,
+.btn-primary,
+.btn-secondary,
+.product-cta,
+.nav-cta{
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Touch animation */
+button:active,
+a:active,
+.product-card:active,
+.why-card:active,
+.btn-primary:active,
+.btn-secondary:active,
+.product-cta:active,
+.nav-cta:active{
+  transform: scale(0.95);
+  opacity: 0.85;
+}
+
+/* Desktop custom cursor */
+@media (min-width: 769px){
+  body,
+  a,
+  button{
+    cursor:none;
+  }
+
+  .cursor,
+  .cursor-ring{
+    display:block;
+  }
+}
+
+/* Mobile */
+@media (max-width:768px){
+  .cursor,
+  .cursor-ring{
+    display:none !important;
+  }
+
+  body,
+  a,
+  button{
+    cursor:auto;
+  }
+}
+</style>
+
+<script>
+// Mobile vibration feedback (supported devices only)
+document.querySelectorAll('button, a').forEach(el => {
+  el.addEventListener('touchstart', () => {
+    if (navigator.vibrate) {
+      navigator.vibrate(20);
+    }
+  });
+});
+</script>
 </body>
 </html>
