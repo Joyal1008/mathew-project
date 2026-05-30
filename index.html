@@ -399,12 +399,32 @@
     overflow: hidden;
     transition: all 0.3s;
     position: relative;
+    transition:all .6s cubic-bezier(.22,1,.36,1);
+      animation:floatCard 6s ease-in-out infinite;
+}
+
+@keyframes floatCard{
+  0%,100%{
+    transform:translateY(0);
+  }
+  50%{
+    transform:translateY(-10px);
+  }
+}
   }
   .product-card:hover {
-    transform: translateY(-8px);
+     transform:
+    translateY(-20px)
+    scale(1.03)
+    rotateX(3deg);
     border-color: var(--ev-orange);
     box-shadow: 0 20px 60px rgba(255,107,0,0.2);
   }
+  
+  box-shadow:
+    0 40px 100px rgba(255,107,0,.25),
+    0 10px 40px rgba(0,0,0,.4);
+}
   .product-card-img {
     height: 400px;
     background: linear-gradient(10deg, #1a1f2e, #0d1117);
@@ -1162,6 +1182,21 @@ body {
     background-attachment: scroll;
   }
 }
+  .reveal{
+  opacity:0;
+  transform:translateY(80px) scale(0.96);
+  filter:blur(12px);
+  transition:
+    opacity 1.4s cubic-bezier(0.22,1,0.36,1),
+    transform 1.4s cubic-bezier(0.22,1,0.36,1),
+    filter 1.2s ease;
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0) scale(1);
+  filter:blur(0);
+}
 
   
 </style>
@@ -1838,6 +1873,23 @@ window.addEventListener('scroll', () => {
     nav.style.background = 'rgba(10,14,26,0.65)';
   }
 });
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.16/dist/lenis.min.js"></script>
+
+<script>
+const lenis = new Lenis({
+  duration: 1.8,
+  smoothWheel: true,
+  smoothTouch: false,
+  wheelMultiplier: 0.8
+});
+
+function raf(time){
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
+
 </script>
 </body>
 </html>
